@@ -1,0 +1,509 @@
+Bro, let's treat this like a real data science project, not just an assignment. If you follow this workflow, you'll have something that's both submission-ready and portfolio-worthy.
+
+---
+
+# Phase 1: Project Setup (15–20 minutes)
+
+### Step 1: Create the project folder
+
+```
+market-sentiment-analysis/
+```
+
+Inside it:
+
+```
+market-sentiment-analysis/
+│
+├── data/
+├── notebooks/
+├── outputs/
+│   ├── plots/
+│   └── tables/
+├── report/
+├── README.md
+├── requirements.txt
+└── .gitignore
+```
+
+---
+
+### Step 2: Create a virtual environment
+
+Open the terminal in the project folder.
+
+Windows
+
+```bash
+python -m venv venv
+```
+
+Activate
+
+```bash
+venv\Scripts\activate
+```
+
+---
+
+### Step 3: Install libraries
+
+```bash
+pip install pandas numpy matplotlib seaborn jupyter openpyxl
+```
+
+Save them
+
+```bash
+pip freeze > requirements.txt
+```
+
+---
+
+### Step 4: Download datasets
+
+Put them inside
+
+```
+data/
+```
+
+For example
+
+```
+historical_data.csv
+fear_greed.csv
+```
+
+---
+
+# Phase 2: Create Notebook
+
+Create
+
+```
+notebooks/
+    analysis.ipynb
+```
+
+---
+
+# Phase 3: Import Libraries
+
+First cell
+
+```python
+import pandas as pd
+import numpy as np
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+plt.style.use("ggplot")
+
+pd.set_option("display.max_columns", None)
+```
+
+---
+
+# Phase 4: Load Data
+
+```python
+trades = pd.read_csv("../data/historical_data.csv")
+sentiment = pd.read_csv("../data/fear_greed.csv")
+```
+
+---
+
+# Phase 5: Understand the Data
+
+Don't analyze immediately.
+
+Run
+
+```python
+trades.head()
+```
+
+```python
+trades.info()
+```
+
+```python
+trades.describe()
+```
+
+Then
+
+```python
+sentiment.head()
+```
+
+```python
+sentiment.info()
+```
+
+```python
+sentiment.describe()
+```
+
+---
+
+# Phase 6: Check Missing Values
+
+```python
+trades.isnull().sum()
+```
+
+```python
+sentiment.isnull().sum()
+```
+
+---
+
+# Phase 7: Check Duplicates
+
+```python
+trades.duplicated().sum()
+```
+
+```python
+sentiment.duplicated().sum()
+```
+
+---
+
+# Phase 8: Convert Dates
+
+Convert timestamps to datetime.
+
+Then create a common date column so the two datasets can be merged.
+
+---
+
+# Phase 9: Merge Datasets
+
+Join trader data with sentiment using the date.
+
+Now every trade has an associated market sentiment.
+
+This is the most important step.
+
+---
+
+# Phase 10: Exploratory Data Analysis (EDA)
+
+This is where you'll earn most of the marks.
+
+---
+
+## Analysis 1
+
+How many trades happened?
+
+---
+
+## Analysis 2
+
+How many traders?
+
+---
+
+## Analysis 3
+
+How many unique coins?
+
+---
+
+## Analysis 4
+
+Total Profit
+
+---
+
+## Analysis 5
+
+Average Profit
+
+---
+
+## Analysis 6
+
+Profit by Sentiment
+
+Fear vs Greed
+
+---
+
+## Analysis 7
+
+Average Profit by Sentiment
+
+---
+
+## Analysis 8
+
+Number of Trades by Sentiment
+
+---
+
+## Analysis 9
+
+Average Leverage
+
+---
+
+## Analysis 10
+
+Maximum Leverage
+
+---
+
+## Analysis 11
+
+Buy vs Sell Performance
+
+---
+
+## Analysis 12
+
+Profit by Coin
+
+BTC
+
+ETH
+
+SOL
+
+etc.
+
+---
+
+## Analysis 13
+
+Top 10 Traders
+
+---
+
+## Analysis 14
+
+Worst 10 Traders
+
+---
+
+## Analysis 15
+
+Largest Winning Trade
+
+---
+
+## Analysis 16
+
+Largest Losing Trade
+
+---
+
+## Analysis 17
+
+Trading Volume by Sentiment
+
+---
+
+## Analysis 18
+
+Average Position Size
+
+---
+
+## Analysis 19
+
+Winning Percentage
+
+Create
+
+```python
+win = closedPnL > 0
+```
+
+Calculate win rate.
+
+---
+
+## Analysis 20
+
+Profit Distribution
+
+---
+
+# Phase 11: Visualization
+
+Every important finding should have a graph.
+
+---
+
+## Graph 1
+
+Bar Chart
+
+Fear vs Greed Profit
+
+---
+
+## Graph 2
+
+Trade Count
+
+---
+
+## Graph 3
+
+Buy vs Sell
+
+---
+
+## Graph 4
+
+Top 10 Traders
+
+---
+
+## Graph 5
+
+Profit Distribution
+
+Histogram
+
+---
+
+## Graph 6
+
+Leverage Distribution
+
+---
+
+## Graph 7
+
+Correlation Heatmap
+
+Numeric columns only
+
+---
+
+## Graph 8
+
+Daily Profit Trend
+
+---
+
+## Graph 9
+
+Most Traded Coins
+
+---
+
+## Graph 10
+
+Average Profit per Coin
+
+---
+
+Save every graph.
+
+```
+outputs/plots/
+```
+
+---
+
+# Phase 12: Find Insights
+
+Don't just show graphs.
+
+Explain them.
+
+Example
+
+❌ Bad
+
+> Average leverage = 15
+
+✅ Good
+
+> Traders tend to use higher leverage during Greed periods, but these trades also exhibit greater profit variability, suggesting increased risk-taking.
+
+Aim for around 8–12 meaningful insights based on your actual results.
+
+---
+
+# Phase 13: Conclusion
+
+Answer questions like:
+
+* Which sentiment is more profitable?
+* Are traders more aggressive during Greed?
+* Which coins perform best?
+* Does leverage help?
+* Which strategy seems safest?
+
+---
+
+# Phase 14: README
+
+Include:
+
+* Project Overview
+* Dataset Description
+* Tools Used
+* Analysis Performed
+* Key Findings
+* How to Run
+
+---
+
+# Phase 15: Report
+
+Convert your notebook findings into a clean PDF.
+
+Structure:
+
+1. Introduction
+2. Objective
+3. Dataset
+4. Cleaning
+5. EDA
+6. Visualizations
+7. Insights
+8. Conclusion
+
+Aim for 5–8 pages with clear figures.
+
+---
+
+# Phase 16: Final Check
+
+Before submitting:
+
+* ✅ Clean notebook (remove unnecessary cells and outputs if needed)
+* ✅ Well-labeled plots
+* ✅ No hardcoded paths
+* ✅ Meaningful comments
+* ✅ README completed
+* ✅ requirements.txt included
+* ✅ Report PDF included
+
+---
+
+## Recommended Timeline
+
+* **Day 1:** Project setup, load data, cleaning, merging.
+* **Day 2:** EDA, charts, and insights.
+* **Day 3:** Polish the notebook, write the report, and review everything before submission.
+
+We'll go through it together. Start with **Phase 1**, and once you've downloaded the datasets and loaded them into the notebook, send me:
+
+1. `trades.head()`
+2. `trades.info()`
+3. `sentiment.head()`
+4. `sentiment.info()`
+
+From there, I'll help you with each analysis step and make sure the final submission is recruiter-quality.
