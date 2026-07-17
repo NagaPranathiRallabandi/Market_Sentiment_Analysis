@@ -19,7 +19,7 @@ def run_pipeline():
     print(f"  Sentiment: {sentiment.shape}")
     
     print("\nCleaning and processing dates...")
-    trades['date'] = pd.to_datetime(trades['Timestamp'], unit='ms').dt.date
+    trades['date'] = pd.to_datetime(trades['Timestamp IST'], dayfirst=True, errors='coerce').dt.date
     sentiment['date'] = pd.to_datetime(sentiment['date']).dt.date
     
     print("Merging datasets on date...")
